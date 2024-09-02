@@ -178,18 +178,18 @@ CMD ["npm", "run", "start"]
 # In most case you can just stop at `grep ^lib` and add those packages to the above stage.
 #
 # set -ex && \
-apt-get update && \
-apt install -yq --no-install-recommends \
-    apt-file \
-&& \
-apt-file update && \
-ldd $(find /app/node_modules/.cache/puppeteer/ -name chrome -type f) | grep -Po "\S+(?= => not found)" | \
-sed 's/\./\\./g' | awk '{print $1"$"}' | apt-file search -xlf - | grep ^lib | \
-xargs -d '\n' -- \
-    apt-get install -yq --no-install-recommends \
-&& \
-apt purge -yq --auto-remove \
-    apt-file \
-rm -rf /tmp/.chromium_path /var/lib/apt/lists/*
+# apt-get update && \
+# apt install -yq --no-install-recommends \
+#     apt-file \
+# && \
+# apt-file update && \
+# ldd $(find /app/node_modules/.cache/puppeteer/ -name chrome -type f) | grep -Po "\S+(?= => not found)" | \
+# sed 's/\./\\./g' | awk '{print $1"$"}' | apt-file search -xlf - | grep ^lib | \
+# xargs -d '\n' -- \
+#     apt-get install -yq --no-install-recommends \
+# && \
+# apt purge -yq --auto-remove \
+#     apt-file \
+# rm -rf /tmp/.chromium_path /var/lib/apt/lists/*
 
 # !!! If you manually build Docker image but with buildx/BuildKit disabled, set TARGETPLATFORM yourself !!!
