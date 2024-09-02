@@ -177,7 +177,7 @@ CMD ["npm", "run", "start"]
 # In case Chromium has unmet shared libs, here is some magic to find and install the packages they belong to:
 # In most case you can just stop at `grep ^lib` and add those packages to the above stage.
 #
-set -ex && \
+# set -ex && \
 apt-get update && \
 apt install -yq --no-install-recommends \
     apt-file \
